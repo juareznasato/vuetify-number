@@ -6,6 +6,19 @@
     "name": "Juarez Nasato",
     "email": "juareznasato@gmail.com"
   },
+  "keywords": [
+    "vuejs",
+    "vuetify",
+    "v-text-field",
+    "number",
+    "integer",
+    "decimal",
+    "percent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juareznasato/vuetify-number.git"
+  },
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
