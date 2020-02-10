@@ -12,8 +12,10 @@
             <VuetifyNumber
               v-model="value"
               v-bind:label="label"
+              v-bind:readonly="readonly"
               v-bind:disabled="disabled"
               v-bind:outlined="outlined"
+              v-bind:clearable="clearable"
               v-bind:options="options"
             />
             Parent v-model: {{ value }} number

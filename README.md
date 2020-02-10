@@ -1,14 +1,14 @@
 # vuetify-number
 
-If you use Vuejs with Vuetify 2.x and you need a component to works with numbers (integer, decimal and percent), maybe this can help you.
+If you use Vuejs with Vuetify 2.x and you need a component to work with numbers (integer, decimal and percent), maybe this can help you.
 
 input:
 Numbers (integer, decimal and percent)
 
 ## Links
-<p><a href="https://k6kzp.csb.app/">See DEMO here</a></p>
-<p><a href="https://github.com/juareznasato/vuetify-simple-date" target="_blank">GitHub</a></p>
-<p><a href="https://www.npmjs.com/package/vuetify-simple-date" target="_blank">npm</a></p>
+<p><a href="https://82wp9.csb.app/">See DEMO here</a></p>
+<p><a href="https://github.com/juareznasato/vuetify-number" target="_blank">GitHub</a></p>
+<p><a href="https://www.npmjs.com/package/vuetify-number" target="_blank">npm</a></p>
 
 ## Install:
 ```
@@ -31,8 +31,10 @@ Parent component:
     <vuetify-number
       v-model="value"
       v-bind:label="label"
+      v-bind:readonly="readonly"
       v-bind:disabled="disabled"
       v-bind:outlined="outlined"
+      v-bind:clearable="clearable"
       v-bind:options="options"
     />
     Parent v-model: {{ value }}
@@ -41,7 +43,7 @@ Parent component:
 <script>
 export default {
   data: () => ({
-    value: "123456789",
+    value: "1234567.89",
     label: "Value",
     readonly: false,
     disabled: false,
