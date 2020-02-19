@@ -1,9 +1,9 @@
 # vuetify-number
 
-If you use Vuejs with Vuetify 2.x and you need a component to work with numbers (integer, decimal and percent), maybe this can help you.
+If you use Vuejs with Vuetify 2.x and you need a component to work with numbers (integer, money, decimal and percent), maybe this can help you.
 
 input:
-Numbers (integer, decimal and percent)
+Numbers (integer, money, decimal and percent)
 
 ## Links
 <p><a href="https://82wp9.csb.app/">See DEMO here</a></p>

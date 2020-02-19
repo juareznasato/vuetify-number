@@ -65,7 +65,7 @@ export default {
   computed: {
     cmpValue: {
       get: function() {
-        return this.value ? this.humanFormat(this.value) : null;
+        return this.value.toString() ? this.humanFormat(this.value.toString()) : null;
       },
       set: function(newValue) {
         this.$emit("input", this.machineFormat(newValue));

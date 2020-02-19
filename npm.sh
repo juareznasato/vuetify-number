@@ -14,8 +14,8 @@
 #
 # --> COMANDOS <--
 # $ npm login               logar no npm
-# $ sh npm-pub.sh -pk       pack
-# $ sh npm-pub.sh -pb       publish
+# $ sh npm.sh -pk       pack
+# $ sh npm.sh -pb       publish
 #
 echo "\033[1;36m  #    # #####  #    #       #####  #    # #####  \033[0m";
 echo "\033[1;36m  ##   # #    # ##  ##       #    # #    # #    # \033[0m";
@@ -25,6 +25,8 @@ echo "\033[1;36m  #   ## #      #    #       #      #    # #    # \033[0m";
 echo "\033[1;36m  #    # #      #    #       #      #    # #    # \033[0m";
 echo "\033[1;36m  #    # #      #    #       #      ###### #####  \033[0m";
 echo
+echo "npm login...";
+npm login;
 echo "Copiando arquivos...";
 cp package.json npm;
 cp README.md npm;
