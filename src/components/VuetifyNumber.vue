@@ -155,7 +155,6 @@ export default {
       return result;
     },
     targetLength() {
-      // Retirar zeros à esquerda: this.value.replace(/^(0+)(\d)/g,"$2"); // Dá erro
       if (
         Number(this.cleanNumber(this.value).length) >=
         Number(this.options.length)

@@ -1,7 +1,7 @@
 {
   "name": "vuetify-number",
-  "version": "0.1.3",
-  "description": "Component to vuetify 2.x, Numbers (integer, decimal and percent)",
+  "version": "0.1.5",
+  "description": "Component to vuetify 2.x, Numbers (money, percent and integer)",
   "author": {
     "name": "Juarez Nasato",
     "email": "juareznasato@gmail.com"

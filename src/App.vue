@@ -35,7 +35,7 @@ export default {
     VuetifyNumber
   },
   data: () => ({
-    value: 0,
+    value: "0.0",
     label: "Valor",
     readonly: false,
     disabled: false,
