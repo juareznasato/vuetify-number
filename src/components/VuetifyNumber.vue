@@ -65,7 +65,9 @@ export default {
   computed: {
     cmpValue: {
       get: function() {
-        return this.value.toString() ? this.humanFormat(this.value.toString()) : null;
+        return this.value.toString()
+          ? this.humanFormat(this.value.toString())
+          : null;
       },
       set: function(newValue) {
         this.$emit("input", this.machineFormat(newValue));
@@ -75,7 +77,7 @@ export default {
   methods: {
     humanFormat: function(number) {
       if (isNaN(number)) {
-        number = "0";
+        number = ""; // 0 anteriormente
       } else {
         // number = Number(number).toLocaleString(this.options.locale, {maximumFractionDigits: 2, minimumFractionDigits: 2, style: 'currency', currency: 'BRL'});
         number = Number(number).toLocaleString(this.options.locale, {
@@ -103,10 +105,10 @@ export default {
             number.length
           );
         if (isNaN(number)) {
-          number = "0";
+          number = ""; // 0 anteriormente
         }
       } else {
-        number = "0";
+        number = ""; // 0 anteriormente
       }
       if (this.options.precision === 0) {
         number = this.cleanNumber(number);
@@ -125,12 +127,22 @@ export default {
         $event.preventDefault();
       }
     },
+    // Retira todos os caracteres não numéricos e zeros à esquerda
     cleanNumber: function(value) {
+      let flag = false;
       let result = "";
-      let arrayValue = value.split("");
+      let arrayValue = value.toString().split("");
       for (var i = 0; i < arrayValue.length; i++) {
         if (this.isInteger(arrayValue[i])) {
-          result = result + arrayValue[i];
+          if (!flag) {
+            // Retirar zeros à esquerda
+            if (arrayValue[i] !== "0") {
+              result = result + arrayValue[i];
+              flag = true;
+            }
+          } else {
+            result = result + arrayValue[i];
+          }
         }
       }
       return result;
@@ -143,11 +155,10 @@ export default {
       return result;
     },
     targetLength() {
-      // Retirar zeros à esquerda: this.value.replace(/^(0+)(\d)/g,"$2");
+      // Retirar zeros à esquerda: this.value.replace(/^(0+)(\d)/g,"$2"); // Dá erro
       if (
-        Number(
-          this.cleanNumber(this.value.replace(/^(0+)(\d)/g, "$2")).length
-        ) >= Number(this.options.length)
+        Number(this.cleanNumber(this.value).length) >=
+        Number(this.options.length)
       ) {
         return true;
       } else {
