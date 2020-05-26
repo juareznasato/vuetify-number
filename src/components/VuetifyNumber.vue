@@ -22,31 +22,31 @@ export default {
     value: {
       // type: String,
       type: [String, Number],
-      default: "0"
+      default: "0",
     },
     label: {
       type: String,
-      default: "Value"
+      default: "Value",
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     outlined: {
       type: Boolean,
-      default: true
+      default: true,
     },
     clearable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     backgroundColor: {
       type: String,
-      default: "white"
+      default: "white",
     },
     options: {
       type: Object,
@@ -56,10 +56,10 @@ export default {
           prefix: "",
           suffix: "",
           length: 11,
-          precision: 2
+          precision: 2,
         };
-      }
-    }
+      },
+    },
   },
   data: () => ({}),
   /*
@@ -70,14 +70,14 @@ export default {
   computed: {
     cmpValue: {
       get: function() {
-        return this.value.toString()
+        return this.value !== null
           ? this.humanFormat(this.value.toString())
           : null;
       },
       set: function(newValue) {
         this.$emit("input", this.machineFormat(newValue));
-      }
-    }
+      },
+    },
   },
   methods: {
     humanFormat: function(number) {
@@ -87,7 +87,7 @@ export default {
         // number = Number(number).toLocaleString(this.options.locale, {maximumFractionDigits: 2, minimumFractionDigits: 2, style: 'currency', currency: 'BRL'});
         number = Number(number).toLocaleString(this.options.locale, {
           maximumFractionDigits: this.options.precision,
-          minimumFractionDigits: this.options.precision
+          minimumFractionDigits: this.options.precision,
         });
       }
       // return this.options.prefix + number + this.options.suffix;
@@ -110,10 +110,10 @@ export default {
             number.length
           );
         if (isNaN(number)) {
-          number = ""; // 0 anteriormente
+          number = null; // "" anteriormente, 0 anteriormente
         }
       } else {
-        number = ""; // 0 anteriormente
+        number = null; // "" anteriormente, 0 anteriormente
       }
       if (this.options.precision === 0) {
         number = this.cleanNumber(number);
@@ -134,19 +134,21 @@ export default {
     },
     // Retira todos os caracteres não numéricos e zeros à esquerda
     cleanNumber: function(value) {
-      let flag = false;
       let result = "";
-      let arrayValue = value.toString().split("");
-      for (var i = 0; i < arrayValue.length; i++) {
-        if (this.isInteger(arrayValue[i])) {
-          if (!flag) {
-            // Retirar zeros à esquerda
-            if (arrayValue[i] !== "0") {
+      if (value) {
+        let flag = false;
+        let arrayValue = value.toString().split("");
+        for (var i = 0; i < arrayValue.length; i++) {
+          if (this.isInteger(arrayValue[i])) {
+            if (!flag) {
+              // Retirar zeros à esquerda
+              if (arrayValue[i] !== "0") {
+                result = result + arrayValue[i];
+                flag = true;
+              }
+            } else {
               result = result + arrayValue[i];
-              flag = true;
             }
-          } else {
-            result = result + arrayValue[i];
           }
         }
       }
@@ -168,7 +170,7 @@ export default {
       } else {
         return false;
       }
-    }
-  }
+    },
+  },
 };
 </script>

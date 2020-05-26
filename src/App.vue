@@ -18,7 +18,9 @@
               v-bind:clearable="clearable"
               v-bind:options="options"
             />
-            Parent v-model: {{ value }} number
+            Parent v-model: {{ value }}
+            <br>
+            Parent v-model: {{ value === null ? "null" : "not null" }}
           </v-col>
         </v-row>
       </v-container>
@@ -35,7 +37,7 @@ export default {
     VuetifyNumber
   },
   data: () => ({
-    value: "0.0",
+    value: "0.0", // "" or "0" or null
     label: "Valor",
     readonly: false,
     disabled: false,
@@ -45,7 +47,7 @@ export default {
       locale: "pt-BR",
       prefix: "R$",
       suffix: "",
-      length: 4,
+      length: 9,
       precision: 2
     }
   })
