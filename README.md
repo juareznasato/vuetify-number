@@ -54,9 +54,9 @@ export default {
       prefix: "R$",
       suffix: "",
       length: 9,
-      precision: 2
+      precision: 2,
+      valueWhenIsEmpty: ""      // "0" or "" or null
     }
   })
 };
 </script>
-

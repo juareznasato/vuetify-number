@@ -20,7 +20,9 @@
             />
             Parent v-model: {{ value }}
             <br>
-            Parent v-model: {{ value === null ? "null" : "not null" }}
+            Parent v-model null: {{ value === null ? "nulo" : "nao nulo" }}
+            <br>
+            Parent v-model "": {{ value === "" ? "vazio" : "nao vazio" }}
           </v-col>
         </v-row>
       </v-container>
@@ -37,7 +39,7 @@ export default {
     VuetifyNumber
   },
   data: () => ({
-    value: "0.0", // "" or "0" or null
+    value: "1.23", // 1.23 or "1.23" or "" or null
     label: "Valor",
     readonly: false,
     disabled: false,
@@ -48,7 +50,8 @@ export default {
       prefix: "R$",
       suffix: "",
       length: 9,
-      precision: 2
+      precision: 2,
+      valueWhenIsEmpty: null, // "0" or "" or null
     }
   })
 };

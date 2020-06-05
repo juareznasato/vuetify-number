@@ -57,6 +57,7 @@ export default {
           suffix: "",
           length: 11,
           precision: 2,
+          valueWhenIsEmpty: "", // "0" or "" or null
         };
       },
     },
@@ -70,9 +71,9 @@ export default {
   computed: {
     cmpValue: {
       get: function() {
-        return this.value !== null
+        return this.value !== null && this.value !== ""
           ? this.humanFormat(this.value.toString())
-          : null;
+          : this.options.valueWhenIsEmpty;
       },
       set: function(newValue) {
         this.$emit("input", this.machineFormat(newValue));
@@ -81,8 +82,9 @@ export default {
   },
   methods: {
     humanFormat: function(number) {
+      console.log(number);
       if (isNaN(number)) {
-        number = ""; // 0 anteriormente
+        number = "";
       } else {
         // number = Number(number).toLocaleString(this.options.locale, {maximumFractionDigits: 2, minimumFractionDigits: 2, style: 'currency', currency: 'BRL'});
         number = Number(number).toLocaleString(this.options.locale, {
@@ -90,7 +92,6 @@ export default {
           minimumFractionDigits: this.options.precision,
         });
       }
-      // return this.options.prefix + number + this.options.suffix;
       return number;
     },
     machineFormat(number) {
@@ -110,10 +111,10 @@ export default {
             number.length
           );
         if (isNaN(number)) {
-          number = null; // "" anteriormente, 0 anteriormente
+          number = this.options.valueWhenIsEmpty;
         }
       } else {
-        number = null; // "" anteriormente, 0 anteriormente
+        number = this.options.valueWhenIsEmpty;
       }
       if (this.options.precision === 0) {
         number = this.cleanNumber(number);
