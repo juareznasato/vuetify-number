@@ -3,9 +3,14 @@
     <v-text-field
       v-model="cmpValue"
       v-bind:label="label"
+      v-bind:placeholder="placeholder"
       v-bind:readonly="readonly"
       v-bind:disabled="disabled"
       v-bind:outlined="outlined"
+      v-bind:dense="dense"
+      v-bind:hide-details="hideDetails"
+      v-bind:error="error"
+      v-bind:rules="rules"
       v-bind:clearable="clearable"
       v-bind:backgroundColor="backgroundColor"
       v-bind:prefix="options.prefix"
@@ -22,31 +27,51 @@ export default {
     value: {
       // type: String,
       type: [String, Number],
-      default: "0",
+      default: "0"
     },
     label: {
       type: String,
-      default: "Value",
+      default: ""
+    },
+    placeholder: {
+      type: String,
+      default: undefined
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
+    },
+    dense: {
+      type: Boolean,
+      default: false
+    },
+    error: {
+      type: Boolean,
+      default: false
+    },
+    hideDetails: {
+      type: [Boolean, String],
+      default: false
+    },
+    rules: {
+      type: [Array, String],
+      default: () => []
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     outlined: {
       type: Boolean,
-      default: true,
+      default: false
     },
     clearable: {
       type: Boolean,
-      default: true,
+      default: false
     },
     backgroundColor: {
       type: String,
-      default: "white",
+      default: "white"
     },
     options: {
       type: Object,
@@ -82,7 +107,6 @@ export default {
   },
   methods: {
     humanFormat: function(number) {
-      console.log(number);
       if (isNaN(number)) {
         number = "";
       } else {

@@ -51,7 +51,7 @@ export default {
       suffix: "",
       length: 9,
       precision: 2,
-      valueWhenIsEmpty: null, // "0" or "" or null
+      valueWhenIsEmpty: "", // "0" or "" or null
     }
   })
 };
