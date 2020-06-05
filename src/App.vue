@@ -45,13 +45,13 @@ export default {
     disabled: false,
     outlined: true,
     clearable: true,
+    valueWhenIsEmpty: "", // "0" or "" or null
     options: {
       locale: "pt-BR",
       prefix: "R$",
       suffix: "",
       length: 9,
       precision: 2,
-      valueWhenIsEmpty: "", // "0" or "" or null
     }
   })
 };

@@ -35,6 +35,7 @@ Parent component:
       v-bind:disabled="disabled"
       v-bind:outlined="outlined"
       v-bind:clearable="clearable"
+	  v-bind:valueWhenIsEmpty="valueWhenIsEmpty"      // "0" or "" or null
       v-bind:options="options"
     />
     Parent v-model: {{ value }}
@@ -49,13 +50,13 @@ export default {
     disabled: false,
     outlined: true,
     clearable: true,
+	valueWhenIsEmpty: ""
     options: {
       locale: "pt-BR",
       prefix: "R$",
       suffix: "",
       length: 9,
-      precision: 2,
-      valueWhenIsEmpty: ""      // "0" or "" or null
+      precision: 2
     }
   })
 };

@@ -73,6 +73,10 @@ export default {
       type: String,
       default: "white"
     },
+    valueWhenIsEmpty: {
+      type: String,
+      default: ""  // "0" or "" or null
+    },
     options: {
       type: Object,
       default: function() {
@@ -81,8 +85,7 @@ export default {
           prefix: "",
           suffix: "",
           length: 11,
-          precision: 2,
-          valueWhenIsEmpty: "", // "0" or "" or null
+          precision: 2
         };
       },
     },
@@ -98,7 +101,7 @@ export default {
       get: function() {
         return this.value !== null && this.value !== ""
           ? this.humanFormat(this.value.toString())
-          : this.options.valueWhenIsEmpty;
+          : this.valueWhenIsEmpty;
       },
       set: function(newValue) {
         this.$emit("input", this.machineFormat(newValue));
@@ -135,10 +138,10 @@ export default {
             number.length
           );
         if (isNaN(number)) {
-          number = this.options.valueWhenIsEmpty;
+          number = this.valueWhenIsEmpty;
         }
       } else {
-        number = this.options.valueWhenIsEmpty;
+        number = this.valueWhenIsEmpty;
       }
       if (this.options.precision === 0) {
         number = this.cleanNumber(number);
