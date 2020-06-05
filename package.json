@@ -1,6 +1,6 @@
 {
   "name": "vuetify-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Component to vuetify 2.x, Numbers (money, percent and integer)",
   "author": {
     "name": "Juarez Nasato",
@@ -24,11 +24,6 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.6.4",
-    "vue": "^2.6.11",
-    "vuetify": "^2.2.11"
   },
   "devDependencies": {
     "@mdi/font": "^4.9.95",
